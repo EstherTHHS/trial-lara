@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::apiResource('/category', CategoryController::class);
 
-    Route::get('/dashboard', DashboardController::class);
+    // Route::get('/dashboard', DashboardController::class);
 });
 
 Route::post('/users/client', [UserController::class, 'clientRegister']);
