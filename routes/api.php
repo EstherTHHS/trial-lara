@@ -31,6 +31,7 @@ use App\Http\Controllers\API\PostAttachmentController;
 Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::apiResource('/users/register', UserController::class);
+    Route::apiResource('/category', CategoryController::class);
 
     Route::get('/roles', [UserController::class, 'getRoleName']);
 });
@@ -38,4 +39,3 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 Route::post('/users/client', [UserController::class, 'clientRegister']);
 Route::post('auth/login', [AuthController::class, 'login']);
 Route::get('/dashboard', [DashboardController::class, 'dashboardList']);
-Route::apiResource('/category', CategoryController::class);
