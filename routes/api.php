@@ -33,16 +33,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('/users/register', UserController::class);
 
     Route::get('/roles', [UserController::class, 'getRoleName']);
-    Route::put('/users/{id}/status', [UserController::class, 'status']);
-    Route::post('/users/{id}/image', [UserController::class, 'storeImageByUserId']);
-    Route::get('/users/{id}/image', [UserController::class, 'getImageByUserId']);
-    Route::delete('/users/{id}/image', [UserController::class, 'deleteImageByUserId']);
-
-    Route::apiResource('/category', CategoryController::class);
-
-    // Route::get('/dashboard', DashboardController::class);
 });
 
 Route::post('/users/client', [UserController::class, 'clientRegister']);
-
 Route::post('auth/login', [AuthController::class, 'login']);
+Route::get('/dashboard', [DashboardController::class, 'dashboardList']);
+Route::apiResource('/category', CategoryController::class);

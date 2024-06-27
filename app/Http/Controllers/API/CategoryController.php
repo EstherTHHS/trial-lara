@@ -19,6 +19,11 @@ class CategoryController extends Controller
     public function __construct(CategoryService $service)
     {
         $this->service = $service;
+        $this->middleware('permission:categoryList', ['only' => 'index']);
+        $this->middleware('permission:categoryCreate', ['only' => 'store']);
+        $this->middleware('permission:categoryShow', ['only' => 'show']);
+        $this->middleware('permission:categoryUpdate', ['only' => 'update']);
+        $this->middleware('permission:categoryDelete', ['only' => 'destroy']);
     }
     public function index()
     {
@@ -44,6 +49,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         try {
+            dd($request->all());
             $startTime = microtime(true);
 
             $validatedData = $request->validated();

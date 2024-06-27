@@ -101,9 +101,7 @@ class UserSeeder extends Seeder
             'name' => 'Rub',
             'email' => 'rub@gmail.com',
             'password' => Hash::make('password'),
-            'phone' => '09765876987',
-            'address' => 'Yangon',
-            'gender' => 'male',
+
         ]);
 
         $rub->assignRole('user');
@@ -112,9 +110,7 @@ class UserSeeder extends Seeder
             'name' => 'Dd',
             'email' => 'dd@gmail.com',
             'password' => Hash::make('password'),
-            'phone' => '09765876987',
-            'address' => 'Yangon',
-            'gender' => 'male',
+
         ]);
 
         $dd->assignRole('user');

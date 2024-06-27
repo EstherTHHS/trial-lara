@@ -17,7 +17,7 @@ class DashboardController extends Controller
     {
         $this->service = $service;
     }
-    public function categoryList()
+    public function dashboardList()
     {
         try {
             $startTime = microtime(true);

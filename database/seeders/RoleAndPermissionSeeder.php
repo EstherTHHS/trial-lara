@@ -23,15 +23,33 @@ class RoleAndPermissionSeeder extends Seeder
         $user_update = Permission::create(['name' => 'userUpdate']);
         $user_delete = Permission::create(['name' => 'userDelete']);
 
+
+        $categoryList = Permission::create(['name' => 'categoryList']);
+        $categoryCreate = Permission::create(['name' => 'categoryCreate']);
+        $categoryShow = Permission::create(['name' => 'categoryShow']);
+        $categoryUpdate = Permission::create(['name' => 'categoryUpdate']);
+        $categoryDelete = Permission::create(['name' => 'categoryDelete']);
+
         $admin->givePermissionTo([
             $user_list,
             $user_show,
             $user_create,
             $user_update,
             $user_delete,
+            $categoryList,
+            $categoryCreate,
+            $categoryShow,
+            $categoryUpdate,
+            $categoryDelete
+
         ]);
         $user->givePermissionTo([
             $user_list,
+            $categoryList,
+            $categoryCreate,
+            $categoryShow,
+            $categoryUpdate,
+            $categoryDelete
         ]);
     }
 }

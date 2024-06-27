@@ -149,68 +149,6 @@ class UserController extends Controller
         }
     }
 
-    public function status(Request $request, $id)
-    {
-        $startTime = microtime(true);
-
-        try {
-            $data = $this->service->status($request, $id);
-
-            return $data;
-        } catch (Exception $e) {
-            Log::channel('hackathon_daily_error')->error('Error Status Change' . $e->getMessage());
-
-            return response()->error(request(), null, $e->getMessage(), 500, $startTime);
-        }
-    }
-
-    public function storeImageByUserId(Request $request, $id)
-    {
-        $startTime = microtime(true);
-
-        try {
-            $data = $this->service->storeImageByUserId($request, $id);
-
-            return $data;
-        } catch (Exception $e) {
-            Log::channel('hackathon_daily_error')->error('Error Image Uploaded' . $e->getMessage());
-
-            return response()->error(request(), null, $e->getMessage(), 500, $startTime);
-        }
-    }
-
-    public function getImageByUserId($id)
-    {
-        $startTime = microtime(true);
-
-        try {
-            $data = $this->service->getImageByUserId($id);
-
-            return $data;
-        } catch (Exception $e) {
-
-            Log::channel('hackathon_daily_error')->error('Error Image Retrieve' . $e->getMessage());
-
-            return response()->error(request(), null, $e->getMessage(), 400, $startTime);
-        }
-    }
-
-    public function deleteImageByUserId($id)
-    {
-        $startTime = microtime(true);
-
-        try {
-            $data = $this->service->deleteImageByUserId($id);
-
-            return $data;
-        } catch (Exception $e) {
-
-            Log::channel('hackathon_daily_error')->error('Error Image Delete' . $e->getMessage());
-
-            return response()->error(request(), null, $e->getMessage(), 400, $startTime);
-        }
-    }
-
     public function clientRegister(UserRequest $request)
     {
         try {
