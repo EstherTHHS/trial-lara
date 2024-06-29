@@ -49,7 +49,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         try {
-            dd($request->all());
+
             $startTime = microtime(true);
 
             $validatedData = $request->validated();

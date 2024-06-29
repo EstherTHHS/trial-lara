@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\LoginResource;
 
 class AuthService
 {
@@ -25,9 +26,10 @@ class AuthService
         }
 
         $user['token'] = $user->createToken("API TOKEN")->plainTextToken;
+        $user->load('roles', 'permissions');
 
-        $user->load('roles');
+        $userResource = new LoginResource($user);
 
-        return response()->success($request, $user, 'User Logged In Successfully.', 200, $startTime, 1);
+        return response()->success($request, $userResource, 'User Logged In Successfully.', 200, $startTime, 1);
     }
 }

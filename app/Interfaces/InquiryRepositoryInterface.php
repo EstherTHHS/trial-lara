@@ -4,9 +4,7 @@ namespace App\Interfaces;
 
 use Illuminate\Http\Request;
 
-interface FeatureRepositoryInterface
+interface InquiryRepositoryInterface
 {
-    public function getFeature();
-
-    public function getFeatureById($id);
+    public function storeInquiry(Request $request);
 }

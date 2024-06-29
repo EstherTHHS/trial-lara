@@ -3,20 +3,13 @@
 namespace App\Providers;
 
 use App\Repositories\UserRepository;
+use App\Repositories\InquiryRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\CategoryRepository;
 use App\Interfaces\UserRepositoryInterface;
+use App\Interfaces\InquiryRepositoryInterface;
 use App\Interfaces\CategoryRepositoryInterface;
-use App\Repositories\FeatureRepository;
-use App\Repositories\SubscriptionRepository;
-use App\Interfaces\FeatureRepositoryInterface;
-use App\Interfaces\PostAttachmentRepositoryInterface;
-use App\Interfaces\PostRepositoryInterface;
-use App\Interfaces\ProfileRepositoryInterface;
-use App\Interfaces\SubscriptionRepositoryInterface;
-use App\Repositories\PostAttachmentRepository;
-use App\Repositories\PostRepository;
-use App\Repositories\ProfileRepository;
+
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -36,5 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->singleton(UserRepositoryInterface::class, UserRepository::class);
 
         $this->app->singleton(CategoryRepositoryInterface::class, CategoryRepository::class);
+
+        $this->app->singleton(InquiryRepositoryInterface::class, InquiryRepository::class);
     }
 }

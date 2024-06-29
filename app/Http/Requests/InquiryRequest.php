@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class CategoryRequest extends FormRequest
+class InquiryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,14 +20,14 @@ class CategoryRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:20',
-            'category' => 'required|in:category1,category2,category3',
-            'description' => 'required|string',
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'description' => 'required|string'
         ];
     }
 
@@ -45,7 +45,7 @@ class CategoryRequest extends FormRequest
                     'total' => 0,
                 ],
                 'data' => [
-                    'message' => 'Validation Error.',
+                    'message' => 'Validation Error',
                     'errors' => $validator->errors(),
                 ],
                 'duration' => (float)sprintf("%.3f", (microtime(true) - LARAVEL_START)),

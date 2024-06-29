@@ -15,11 +15,15 @@ class GetUserListResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $roles = $this->roles->pluck('name')->first();
+        $permissions = $this->getAllPermissions()->pluck('name');
+
         return [
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'roles' => optional($this->roles->first())->name,
+            'roles' => $roles,
+            'permissions' => $permissions,
 
         ];
     }

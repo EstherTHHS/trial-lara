@@ -2,33 +2,40 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\InquiryRequest;
+use App\Repositories\InquiryRepository;
 
 class InquiryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    protected $inquiryRepo;
+    public function __construct(InquiryRepository $inquiryRepo)
     {
-        //
+        $this->inquiryRepo = $inquiryRepo;
     }
-
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(InquiryRequest $request)
     {
-        //
+        try {
+
+            $startTime = microtime(true);
+
+            $validatedData = $request->validated();
+
+            $data = $this->inquiryRepo->storeInquiry($validatedData);
+
+            return response()->success($request, $data, 'Inquiry Created Sucessfully.', 201, $startTime, 1);
+        } catch (Exception $e) {
+            Log::channel('hackthon_daily_error')->error('Error Create Inquiry' . $e->getMessage());
+
+            return response()->error($request, null, $e->getMessage(), 500, $startTime);
+        }
     }
 
     /**

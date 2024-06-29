@@ -14,13 +14,15 @@ class LoginResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // return parent::toArray($request);
+        $roles = $this->roles->pluck('name')->first();
+        $permissions = $this->getAllPermissions()->pluck('name');
 
         return [
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'roles' => optional($this->roles->first())->name,
+            'roles' => $roles,
+            'permissions' => $permissions,
             'token' => $this->token,
         ];
     }

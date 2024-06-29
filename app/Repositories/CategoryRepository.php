@@ -9,7 +9,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 {
     public function getCategory()
     {
-        $category = Category::with('profile')->get();
+        $category = Category::get();
 
         return $category;
     }
@@ -18,7 +18,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         $startTime = microtime(true);
 
-        $category = Category::where('id', $id)->with('profile')->first();
+        $category = Category::where('id', $id)->first();
 
         if ($category) {
             return response()->success(request(), $category, 'Category Found Successfully', 200, $startTime, 1);
