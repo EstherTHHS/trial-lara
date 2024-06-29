@@ -20,15 +20,15 @@ class InquiryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(InquiryRequest $request)
+    public function store(Request $request)
     {
         try {
 
             $startTime = microtime(true);
 
-            $validatedData = $request->validated();
+            // $validatedData = $request->validated();
 
-            $data = $this->inquiryRepo->storeInquiry($validatedData);
+            $data = $this->inquiryRepo->storeInquiry($request->all());
 
             return response()->success($request, $data, 'Inquiry Created Sucessfully.', 201, $startTime, 1);
         } catch (Exception $e) {

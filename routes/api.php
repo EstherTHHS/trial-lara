@@ -9,6 +9,7 @@ use App\Http\Controllers\API\FeatureController;
 use App\Http\Controllers\API\ProfileController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\DashboardController;
+use App\Http\Controllers\API\InquiryController;
 use App\Http\Controllers\API\PaymentController;
 use App\Http\Controllers\API\SubscriptionController;
 use App\Http\Controllers\API\PostAttachmentController;
@@ -38,3 +39,4 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 Route::post('auth/login', [AuthController::class, 'login']);
 Route::get('/dashboard', [DashboardController::class, 'dashboardList']);
+Route::post('/inquiry', [InquiryController::class, 'store']);
