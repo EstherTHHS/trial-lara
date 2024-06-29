@@ -15,16 +15,7 @@ class  InquiryRepository implements InquiryRepositoryInterface
 
     $inquiry = Inquiry::create($data);
     // inquiry@mail.test
-    // $mail = [
-    //   'title' =>  $inquiry->title,
-
-    // ];
-
-    Mail::to('thethhsan@gmail.com')->send(new InquiryMail([
-      'title' => $inquiry->title,
-      'email' => $inquiry->email,
-      'description' => $inquiry->description
-    ]));
+    Mail::to('inquiry@mail.test')->send(new InquiryMail($inquiry));
     return $inquiry;
   }
 }

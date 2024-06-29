@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Inquiry;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -13,35 +14,22 @@ class InquiryMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    protected $inquiry;
-    public function __construct($inquiry)
+    public Inquiry $inquiry;
+
+    public function __construct(Inquiry $inquiry)
     {
         $this->inquiry = $inquiry;
     }
 
-
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
-    public function attachments(): array
+    public function content(): Content
     {
-        return [];
-    }
-
-    public function build()
-    {
-        return $this->subject('Email Notification from Inquiry')
-            ->view('email.inquiry')
-            ->with([
-                'title' => $this->inquiry->title,
+        return new Content(
+            view: 'email.inquiry',
+            with: [
+                'name' => $this->inquiry->name,
                 'email' => $this->inquiry->email,
-                'description' => $this->inquiry->description
-            ]);
+                'description' => $this->inquiry->description,
+            ],
+        );
     }
 }

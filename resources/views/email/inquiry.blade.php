@@ -9,16 +9,12 @@
 </head>
 
 <body>
-    {{-- 【氏名】 --}}
-    <p>{{ $inquiry->title }}</p>
-
-
-    {{-- 【本文】 --}}
-    {{-- <p>{{ email }}</p>
-
-    <p>{{ $data['description'] }}</p> --}}
-    {{-- 
-    <p>お問い合わせのメールです。</p> --}}
+    <p>【氏名】</p>
+    <p>{{ $name }}</p>
+    <p>【本文】</p>
+    <p>{{ $email }}</p>
+    <p>{{ $description }}</p>
+    <p>お問い合わせのメールです。</p>
 </body>
 
 </html>
