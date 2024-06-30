@@ -14,21 +14,24 @@ class RoleAndPermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin = Role::create(['name' => 'admin']);
-        $user = Role::create(['name' => 'user']);
+        $admin       = Role::create(['name' => 'admin']);
+        $user        = Role::create(['name' => 'user']);
 
-        $user_list = Permission::create(['name' => 'userList']);
-        $user_show = Permission::create(['name' => 'userShow']);
+        $user_list   = Permission::create(['name' => 'userList']);
+        $user_show   = Permission::create(['name' => 'userShow']);
         $user_create = Permission::create(['name' => 'userCreate']);
         $user_update = Permission::create(['name' => 'userUpdate']);
         $user_delete = Permission::create(['name' => 'userDelete']);
 
 
-        $categoryList = Permission::create(['name' => 'categoryList']);
+        $categoryList   = Permission::create(['name' => 'categoryList']);
         $categoryCreate = Permission::create(['name' => 'categoryCreate']);
-        $categoryShow = Permission::create(['name' => 'categoryShow']);
+        $categoryShow   = Permission::create(['name' => 'categoryShow']);
         $categoryUpdate = Permission::create(['name' => 'categoryUpdate']);
         $categoryDelete = Permission::create(['name' => 'categoryDelete']);
+
+        $dashboardList = Permission::create(['name' => 'dashboardList']);
+        $getCategoryCsv = Permission::create(['name' => 'getCategoryCsv']);
 
         $admin->givePermissionTo([
             $user_list,
@@ -40,7 +43,10 @@ class RoleAndPermissionSeeder extends Seeder
             $categoryCreate,
             $categoryShow,
             $categoryUpdate,
-            $categoryDelete
+            $categoryDelete,
+            $dashboardList,
+            $getCategoryCsv
+
 
         ]);
         $user->givePermissionTo([
@@ -49,7 +55,8 @@ class RoleAndPermissionSeeder extends Seeder
             $categoryCreate,
             $categoryShow,
             $categoryUpdate,
-            $categoryDelete
+            $categoryDelete,
+            $dashboardList,
         ]);
     }
 }

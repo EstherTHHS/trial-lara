@@ -32,7 +32,7 @@ class UserService
     {
         $user = User::create($data);
         $role = Role::firstOrCreate(['name' => 'user']);
-        $user->assignRole($role);
+        $user->assignRole($role->user);
         return $user;
     }
 

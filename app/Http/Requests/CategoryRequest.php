@@ -27,7 +27,7 @@ class CategoryRequest extends FormRequest
         return [
             'title' => 'required|string|max:20',
             'category' => 'required|in:category1,category2,category3',
-            'description' => 'required|string',
+            'description' => 'required|string|max:200',
         ];
     }
 
